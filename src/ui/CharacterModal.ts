@@ -13,7 +13,16 @@ export class CharacterModal extends HTMLElement {
         // this.textContent =   'Soy un CharacterModal custom';
     }
 
+    /**
+     * Método estático para crear una instancia del modal
+     * Alternativa más limpia al createElement + casting
+     */
+    public static create(): CharacterModal {
+        return document.createElement('character-modal') as CharacterModal;
+    }
+
     public show(character: HPCharacter): void {
+        console.log(character);
         this.character = character;
         this.render();
         this.classList.add('visible');

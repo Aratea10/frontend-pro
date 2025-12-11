@@ -1,6 +1,6 @@
 import { Page } from './Page';
 import { FormValidator } from '../lib/FormValidator';
-import { Toast } from '../ui/toast/Toas';
+import { Toast } from '../ui/toast/Toast';
 
 class Contact extends Page {
 
