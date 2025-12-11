@@ -6,7 +6,6 @@ class Teams {
     constructor() {
         console.log('Teams instanciado');
         this.printChracters();
-
     }
 
     private async printChracters() {
@@ -22,9 +21,11 @@ class Teams {
             const characters = await ApiService.getCharacters();
 
             charactersContainer.innerHTML = characters.slice(0, 15).map(i => `
-                <article>
+                <div>
                     <strong>${i.name}</strong>
-                </article>
+                    <p>Casa: ${i.house}</p>
+                    <img src="${i.image}"></img>
+                </div>
             `).join('');
             // TODO: pintar los elementos en divs individuales que contengan el nombre, la casa y la imagen. No hacen falta estilos.
 
