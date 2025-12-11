@@ -66,6 +66,17 @@ body {
                 @include tablet {
                     width: 40%
                 }
+
+                h3 {
+                    margin-bottom: 0.5rem;
+                }
+
+                img.hp-character {
+                    width: 3rem;
+                    height: 3rem;
+                    border-radius: 50%;
+                    overflow: hidden;
+                }
             }
         }
     }

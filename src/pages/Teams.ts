@@ -17,18 +17,17 @@ class Teams {
 
     private async printChracters(): Promise<void> {
         const charactersContainer = document.querySelector('#characters-container');
-        if (!charactersContainer) return;
 
         try {
 
             for (const house in HPHouse) {
-                const elementClass = '#' + house.toLowerCase();
+                const elementClass = `#${house.toLowerCase()} div.house-images`;
                 const characters = await HPApiService.getCharactersByHouse(house);
-                this.printElement(characters, elementClass);
+                this.printElement(characters.slice(0, 6), elementClass);
             }
 
         } catch (e) {
-            charactersContainer.textContent = 'Error al obtener los personajes';
+            console.log(e);
         }
 
     }
@@ -46,12 +45,12 @@ class Teams {
     }
 
     private printElement(characters: HPCharacter[], elementRef: string): void {
+        // TODO: debemos pintar estos elementos dentro del div de su "house";
+        // TIP: hay que añadir un elemento addicional desde TS por cada imagen.
         const element = document.querySelector(elementRef);
         if (!element) return;
         element.innerHTML = characters.filter(i => i.image).slice(0, 15).map(i => `
-            <div>
-                <img src="${i.image}" data-id="${i.id}" class="hp-character"></img>
-            </div>
+            <img src="${i.image}" data-id="${i.id}" class="hp-character"></img>
         `).join('');
     }
 
