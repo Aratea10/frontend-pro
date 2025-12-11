@@ -1,4 +1,5 @@
 @use 'responsive' as *;
+@forward 'footer';
 
 .container {
     margin-left: auto;
