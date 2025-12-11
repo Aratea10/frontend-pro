@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <include src="src/components/_head.html" locals='{
+            "title": "Contact | Quidditch Games XIX",
+            "styles": "styles/contact.scss"
+        }'>
+    </include>
+</head>
+
+<body>
+
+    <include src="src/components/_nav.html"></include>
+
+    <include src="src/components/_hero.html"></include>
+
+
+    <section id="contact" class="inner container">
+        <h2>
+            Contacta con nosotros
+        </h2>
+        <p>
+            Si tienes alguna duda o sugerencia, no dudes en ponerte en contacto con nosotros.
+        </p>
+        <div class="form-container">
+            <form id="contactForm" method="post" novalidate>
+                <label for="name">Nombre</label>
+                <input type="text" name="name" id="name" placeholder="Nombre" required>
+                <span class="name-error-message error"></span>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+                <span class="email-error-message error"></span>
+                <label for="message">Mensaje</label>
+                <textarea name="message" id="message" cols="30" rows="10" placeholder="Mensaje" required></textarea>
+                <span class="message-error-message error"></span>
+                <button type="submit" value="Enviar">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <include src="src/components/_footer.html"></include>
+
+    <script src="pages/Contact.ts" type="module"></script>
+
+</body>
+
+</html>
