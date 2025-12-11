@@ -16,12 +16,13 @@ class Teams {
 
         try {
 
+            // TODO: por cada div de una casa, añadir las fotos de los personajes de esa casa.
+            // Si un personaje no tiene foto, lo omito.
+
             // const apiService = new ApiService();
             // const characters = apiService.getCharacters();
             // Como es estático, no necesito una instáncia de clase, puedo llamar al método directamente de la clase.
             const characters = await ApiService.getCharacters();
-
-            characters[1].house = 'Gryffindor';
 
             charactersContainer.innerHTML = characters.slice(0, 15).map(i => `
                 <div>
@@ -30,8 +31,6 @@ class Teams {
                     <img src="${i.image}"></img>
                 </div>
             `).join('');
-            // TODO: pintar los elementos en divs individuales que contengan el nombre, la casa y la imagen. No hacen falta estilos.
-
             // console.table(
             //     characters.filter( i => i.hogwartsStudent ).map( (i) => ({ id: i.id, name: i.name, house: i.house, actor: i.actor, patronus: i.patronus, length: i.wand.length?.toFixed(0) }))
             // );
