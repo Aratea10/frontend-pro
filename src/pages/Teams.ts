@@ -8,6 +8,7 @@ class Teams {
     constructor() {
         console.log('Teams instanciado');
         this.printChracters();
+        this.charactersClickEvent();
     }
 
     private async printChracters() {
@@ -36,9 +37,21 @@ class Teams {
         if (!element) return;
         element.innerHTML = characters.filter(i => i.image).slice(0, 15).map(i => `
             <div>
-                <img src="${i.image}"></img>
+                <img src="${i.image}" data-id="${i.id}" class="hp-character"></img>
             </div>
         `).join('');
+    }
+
+    private async charactersClickEvent() {
+        document.addEventListener('click', async (event) => {
+            const target = event.target as HTMLElement;
+            if (target && target.classList.contains('hp-character')) {
+                const id = target.getAttribute('data-id');
+                if (!id) return;
+                const character = await HPApiService.getCharacter(id);
+                console.log(character);
+            }
+        });
     }
 
 }
