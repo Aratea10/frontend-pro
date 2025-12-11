@@ -90,15 +90,11 @@ class Home {
     private updateCountdownDisplay(timeRemaning: { days: number, hours: number, minutes: number, seconds: number }): void {
         if (!this.coundownElements) return;
         const { days, hours, minutes, seconds } = this.coundownElements;
-        const now = new Date();
         days.innerText = timeRemaning.days.toString();
         hours.innerText = timeRemaning.hours.toString();
         minutes.innerText = timeRemaning.minutes.toString();
         seconds.innerText = timeRemaning.seconds.toString();
     }
-
-    // TODO:
-    // El valor del contador se debe actualizar cada segundo
 
 }
 new Home();
