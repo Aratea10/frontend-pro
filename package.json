@@ -3,24 +3,26 @@
     "version": "1.0.0",
     "description": "",
     "scripts": {
-        "start": "parcel src/index.html",
+        "start": "npm run clean:cache && parcel src/index.html",
         "clean": "rimraf dist",
+        "clean:cache": "rimraf .parcel-cache",
         "build:test": "parcel build src/index.html",
         "build:prod": "npm run clean && parcel build --no-source-maps src/index.html"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/KeepCodingWeb19/frontend-pro.git"
+        "url": "git+https://github.com/Aratea10/frontend-pro.git"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "type": "module",
     "bugs": {
-        "url": "https://github.com/KeepCodingWeb19/frontend-pro/issues"
+        "url": "https://github.com/Aratea10/frontend-pro/issues"
     },
-    "homepage": "https://github.com/KeepCodingWeb19/frontend-pro#readme",
+    "homepage": "https://github.com/Aratea10/frontend-pro#readme",
     "devDependencies": {
+        "@parcel/transformer-sass": "^2.16.1",
         "parcel": "^2.16.1",
         "rimraf": "^6.1.2"
     },
