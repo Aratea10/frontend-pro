@@ -303,3 +303,9 @@ Ejemplo de `main.scss`:
 - Mantén una arquitectura clara y escalable.
 
 ---
+
+| **Información** |                                            |
+| --------------- | ------------------------------------------ |
+| **Autor:**      | Nauel Gómez @ KeepCoding                   |
+| **Curso:**      | Full Stack Web Bootcamp XIX - Frontend Pro |
+| **Fecha:**      | Diciembre 2025                             |
