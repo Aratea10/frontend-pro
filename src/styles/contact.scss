@@ -37,6 +37,10 @@ $button-text-color: #4d3c3c;
         input,
         textarea {
             @include form-input-base;
+
+            &.invalid {
+                border-color: $error-color;
+            }
         }
 
         button {
