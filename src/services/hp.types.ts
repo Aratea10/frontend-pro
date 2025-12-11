@@ -5,8 +5,8 @@ export interface HPCharacter {
     species: string;
     gender: string;
     house: string;
-    dateOfBirth: null;
-    yearOfBirth: null;
+    dateOfBirth: string | null;
+    yearOfBirth: number | null;
     wizard: boolean;
     ancestry: string;
     eyeColour: string;
