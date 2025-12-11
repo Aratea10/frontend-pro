@@ -7,18 +7,19 @@ class Teams {
 
     constructor() {
         console.log('Teams instanciado');
-        this.printChracters();
+        this.bootstrap();
+    }
+
+    private async bootstrap(): Promise<void> {
+        await this.printChracters();
         this.charactersClickEvent();
     }
 
-    private async printChracters() {
+    private async printChracters(): Promise<void> {
         const charactersContainer = document.querySelector('#characters-container');
         if (!charactersContainer) return;
 
         try {
-
-            // TODO: por cada div de una casa, añadir las fotos de los personajes de esa casa.
-            // Si un personaje no tiene foto, lo omito.
 
             for (const house in HPHouse) {
                 const elementClass = '#' + house.toLowerCase();
@@ -32,17 +33,7 @@ class Teams {
 
     }
 
-    private printElement(characters: HPCharacter[], elementRef: string): void {
-        const element = document.querySelector(elementRef);
-        if (!element) return;
-        element.innerHTML = characters.filter(i => i.image).slice(0, 15).map(i => `
-            <div>
-                <img src="${i.image}" data-id="${i.id}" class="hp-character"></img>
-            </div>
-        `).join('');
-    }
-
-    private async charactersClickEvent() {
+    private async charactersClickEvent(): Promise<void> {
         document.addEventListener('click', async (event) => {
             const target = event.target as HTMLElement;
             if (target && target.classList.contains('hp-character')) {
@@ -54,8 +45,18 @@ class Teams {
         });
     }
 
+    private printElement(characters: HPCharacter[], elementRef: string): void {
+        const element = document.querySelector(elementRef);
+        if (!element) return;
+        element.innerHTML = characters.filter(i => i.image).slice(0, 15).map(i => `
+            <div>
+                <img src="${i.image}" data-id="${i.id}" class="hp-character"></img>
+            </div>
+        `).join('');
+    }
+
 }
-const teams = new Teams();
+new Teams();
 
 // No puedo acceder a una propiedad PRIVADA fuera de la clase.
 // teams.printChracters();
