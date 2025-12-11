@@ -1,5 +1,6 @@
 import { ApiService } from '../services/ApiService';
-import { HPHouse } from '../services/hp.types';
+import { HPCharacter, HPHouse } from '../services/hp.types';
+import { HPApiService } from '../services/HPApiService';
 
 
 class Teams {
@@ -19,24 +20,25 @@ class Teams {
             // Si un personaje no tiene foto, lo omito.
 
             for (const house in HPHouse) {
-                console.log(house);
                 const elementClass = '#' + house.toLowerCase();
-                console.log(elementClass);
-                const element = document.querySelector(elementClass);
-                console.log(element);
-                if (!element) return;
-                const characters = await ApiService.getCharactersByHouse(house);
-                element.innerHTML = characters.filter(i => i.image).slice(0, 15).map(i => `
-                    <div>
-                        <img src="${i.image}"></img>
-                    </div>
-                `).join('');
+                const characters = await HPApiService.getCharactersByHouse(house);
+                this.printElement(characters, elementClass);
             }
 
         } catch (e) {
             charactersContainer.textContent = 'Error al obtener los personajes';
         }
 
+    }
+
+    private printElement(characters: HPCharacter[], elementRef: string): void {
+        const element = document.querySelector(elementRef);
+        if (!element) return;
+        element.innerHTML = characters.filter(i => i.image).slice(0, 15).map(i => `
+            <div>
+                <img src="${i.image}"></img>
+            </div>
+        `).join('');
     }
 
 }
