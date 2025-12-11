@@ -1,6 +1,5 @@
 @use 'config' as *;
 @use 'responsive' as *;
-@forward 'reset';
 @forward 'common';
 
 // No es una buena practica importar estilos con import
@@ -9,29 +8,8 @@
 
 // Podemos sobreescribir variables
 // $gold-color: black;
-$bg-image: url('../img/header.jpg?as=webp&quality=75&width=2200');
 
 body {
-
-    section.hero {
-        background-image: $bg-image;
-        background-size: cover;
-        background-position: center center;
-        background-repeat: no-repeat;
-        padding: 200px 0;
-        filter: brightness(0.7);
-
-        h1.page-title {
-            color: $gold-color;
-            font-family: $header-font-family;
-            text-align: center;
-            text-transform: uppercase;
-            text-decoration: underline;
-            letter-spacing: 0.25rem;
-            font-size: 2.25rem;
-        }
-
-    }
 
     section#teams {
         padding: 2rem 0;

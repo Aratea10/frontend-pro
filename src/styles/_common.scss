@@ -1,6 +1,11 @@
 @use 'responsive' as *;
+@use 'config' as *;
+@forward 'reset';
 @forward 'footer';
 @forward 'nav';
+
+
+$bg-image: url('../img/header.jpg?as=webp&quality=75&width=2200');
 
 .container {
     margin-left: auto;
@@ -19,5 +24,43 @@
 
     @include desktop-lg {
         max-width: $bp-desktop-lg;
+    }
+}
+
+section.hero {
+    background-image: $bg-image;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 200px 0;
+    filter: brightness(0.7);
+
+    h1.page-title {
+        color: $gold-color;
+        font-family: $header-font-family;
+        text-align: center;
+        text-transform: uppercase;
+        text-decoration: underline;
+        letter-spacing: 0.25rem;
+        font-size: 2.25rem;
+    }
+
+}
+
+section.inner {
+    padding: 3rem 0;
+
+    h2 {
+        font-family: $header-font-family;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        font-family: $body-font-family;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
     }
 }
