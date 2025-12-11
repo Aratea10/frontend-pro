@@ -25,7 +25,8 @@ class Contact extends Page {
         const form = document.getElementById('contactForm') as HTMLFormElement;
         form?.addEventListener('submit', (event) => {
             event.preventDefault();
-            this.validator.printErrors(form);
+            const errors = this.validator.validateForm(form);
+            console.log(errors);
         });
     }
 

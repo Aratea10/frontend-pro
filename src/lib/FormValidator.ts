@@ -58,10 +58,9 @@ export class FormValidator {
         return this.getErrorMessages(element.validity as ValidationState);
     }
 
-    // TODO: haz que se impriman los errores personalizados.
-    public printErrors(form: HTMLFormElement): void {
+    public validateForm(form: HTMLFormElement): Map<string, string> {
         const elements = form.elements;
-        const errors: { name: string, valid: boolean, message: string }[] = [];
+        const errors = new Map<string, string>();
         for (let i = 0; i < elements.length; i++) {
             const element = elements[i];
 
@@ -69,13 +68,12 @@ export class FormValidator {
                 element instanceof HTMLTextAreaElement ||
                 element instanceof HTMLSelectElement
             ) {
-                errors.push({
-                    name: element.name,
-                    valid: element.validationMessage.length === 0,
-                    message: this.validateElement(element),
-                })
+                const errorMessage = this.validateElement(element);
+                if (errorMessage && element.name) {
+                    errors.set(element.name, errorMessage);
+                }
             }
         }
-        console.table(errors);
+        return errors;
     }
 }
