@@ -7,16 +7,28 @@
 
 // Podemos sobreescribir variables
 // $gold-color: black;
+$bg-image: url('../img/header.jpg');
 
 body {
-    h1 {
-        color: $gold-color;
-        font-family: $body-font-family;
-        @include text-primary-bold;
 
-        &:hover {
-            color: red;
+    section.hero {
+        background-image: $bg-image;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        padding: 200px 0;
+        filter: brightness(0.7);
+
+        h1.page-title {
+            color: $gold-color;
+            font-family: $header-font-family;
+            text-align: center;
+            text-transform: uppercase;
+            text-decoration: underline;
+            letter-spacing: 0.25rem;
+            font-size: 2.25rem;
         }
+
     }
 
     div#characters-container {
