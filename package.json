@@ -23,10 +23,14 @@
     "homepage": "https://github.com/Aratea10/frontend-pro#readme",
     "devDependencies": {
         "@parcel/transformer-sass": "^2.16.1",
+        "@types/luxon": "^3.7.1",
         "parcel": "^2.16.1",
         "posthtml-include": "^2.0.1",
         "rimraf": "^6.1.2",
         "sharp": "^0.33.5"
     },
-    "browserslist": "> 0.5%, last 2 versions, not dead"
+    "browserslist": "> 0.5%, last 2 versions, not dead",
+    "dependencies": {
+        "luxon": "^3.7.2"
+    }
 }
