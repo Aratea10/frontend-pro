@@ -1,0 +1,21 @@
+@use 'responsive' as *;
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    width: 100%;
+
+    @include tablet {
+        max-width: $bp-tablet;
+    }
+
+    @include desktop {
+        max-width: $bp-desktop;
+    }
+
+    @include desktop-lg {
+        max-width: $bp-desktop-lg;
+    }
+}

@@ -1,5 +1,7 @@
 @use 'config' as *;
+@use 'responsive' as *;
 @forward 'reset';
+@forward 'common';
 
 // No es una buena practica importar estilos con import
 // @import 'reset';
@@ -29,6 +31,43 @@ body {
             font-size: 2.25rem;
         }
 
+    }
+
+    section#teams {
+        padding: 2rem 0;
+
+        h2 {
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-family: $header-font-family;
+            letter-spacing: 0.5rem;
+        }
+
+        div.house-cards {
+
+            display: flex;
+            justify-content: space-between;
+            text-align: center;
+            align-items: center;
+            flex-wrap: wrap;
+
+            div.house-card {
+                display: flex;
+                margin: 2rem;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+                padding: 1rem;
+                border-radius: 0.4rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+                @include tablet {
+                    width: 40%
+                }
+            }
+        }
     }
 
     div#characters-container {
