@@ -19,6 +19,10 @@ class Teams extends Page {
         this.charactersClickEvent();
     }
 
+    destroy(): void | Promise<void> {
+        return;
+    }
+
     private async printChracters(): Promise<void> {
         const charactersContainer = document.querySelector('#characters-container');
 
