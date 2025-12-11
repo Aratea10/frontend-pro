@@ -6,7 +6,8 @@ type HPHouse = 'Gryffindor' | 'Slytherin' | 'Hufflepuff' | 'Ravenclaw';
 interface HPCharacterWand {
     wood: string;
     core: string;
-    length: string;
+    // length?: string; // puede ser undefined
+    length: number | null;
 }
 
 interface HPCharacter {
@@ -49,7 +50,7 @@ async function getCharacters() {
     // id | name | house
     // "9e3f7ce4-b9a7-4244-b709-dae5c1f1d4a8" | "Harry Potter" | "Gryffindor"
     console.table(
-        data.filter(i => i.hogwartsStudent).map((i) => ({ id: i.id, name: i.name, house: i.house, actor: i.actor, patronus: i.patronus }))
+        data.filter(i => i.hogwartsStudent).map((i) => ({ id: i.id, name: i.name, house: i.house, actor: i.actor, patronus: i.patronus, length: i.wand.length?.toFixed(0) }))
     );
 }
 
