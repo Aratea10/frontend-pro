@@ -1,117 +1,92 @@
-# Guía de TypeScript para Frontend Pro
+# 📘 Guía de TypeScript
 
-<div align="center">
-    <img src="https://keepcoding.io/wp-content/uploads/2024/11/Logo-kc237.svg" alt="KeepCoding Web Bootcamp XV - Frontend PRO">
-</div>
-
-Guía rápida de TypeScript para el módulo de Frontend Pro del Bootcamp de Web de KeepCoding.
+> **Guía rápida de TypeScript para el módulo de Frontend Pro del Bootcamp de Web de KeepCoding.**
 
 ---
 
-# 📚 Índice
+## 📚 Índice
 
-- [Guía de TypeScript para Frontend Pro](#guía-de-typescript-para-frontend-pro)
-- [📚 Índice](#-índice)
-  - [1. ¿Qué es TypeScript y por qué usarlo?](#1-qué-es-typescript-y-por-qué-usarlo)
-    - [🟩 Ejemplo comparativo](#-ejemplo-comparativo)
-  - [2. Instalación y primeros pasos](#2-instalación-y-primeros-pasos)
-  - [3. El compilador y tsconfig.json](#3-el-compilador-y-tsconfigjson)
-  - [4. Tipos básicos](#4-tipos-básicos)
-  - [5. Inferencia de tipos](#5-inferencia-de-tipos)
-  - [6. Tipos especiales y útiles](#6-tipos-especiales-y-útiles)
-    - [any (evitarlo)](#any-evitarlo)
-    - [unknown](#unknown)
-    - [void y never](#void-y-never)
-  - [7. Funciones en TypeScript](#7-funciones-en-typescript)
-  - [8. Objetos, interfaces y type aliases](#8-objetos-interfaces-y-type-aliases)
-  - [9. Uniones, intersecciones y narrowing](#9-uniones-intersecciones-y-narrowing)
-  - [10. Literales y enums](#10-literales-y-enums)
-  - [11. Clases y POO](#11-clases-y-poo)
-  - [12. Genéricos](#12-genéricos)
-  - [13. Módulos y organización](#13-módulos-y-organización)
-  - [14. Utility Types](#14-utility-types)
-    - [Partial](#partial)
-    - [Pick](#pick)
-    - [Omit](#omit)
-  - [15. Librerías JavaScript con TypeScript](#15-librerías-javascript-con-typescript)
-  - [16. Integración con Parcel](#16-integración-con-parcel)
-  - [17. Buenas prácticas](#17-buenas-prácticas)
+- [1. ¿Qué es TypeScript?](#1-qué-es-typescript-y-por-qué-usarlo)
+- [2. Instalación](#2-instalación-y-primeros-pasos)
+- [3. Compilador y Configuración](#3-el-compilador-y-tsconfigjson)
+- [4. Tipos básicos](#4-tipos-básicos)
+- [5. Inferencia](#5-inferencia-de-tipos)
+- [6. Tipos especiales](#6-tipos-especiales-y-útiles)
+- [7. Funciones](#7-funciones-en-typescript)
+- [8. Objetos y Tipos](#8-objetos-interfaces-y-type-aliases)
+- [9. Uniones e Intersecciones](#9-uniones-intersecciones-y-narrowing)
+- [10. Clases y POO](#11-clases-y-poo)
+- [11. Genéricos](#12-genéricos)
+- [12. Utility Types](#14-utility-types)
+- [13. Buenas prácticas](#17-buenas-prácticas)
 
 ---
 
-## 1. ¿Qué es TypeScript y por qué usarlo?
+## 1. 🧐 ¿Qué es TypeScript y por qué usarlo?
 
-TypeScript es un *superset* de JavaScript que añade:
+**TypeScript** es JavaScript con superpoderes de tipado. Es un *superset* que compila a JavaScript.
 
-- Tipado estático opcional
-- Mejor autocompletado
-- Detección temprana de errores
-- Mejor experiencia para equipos y proyectos grandes
+- ✅ **Seguridad:** Detecta errores *antes* de ejecutar el código.
+- 🤖 **Autocompletado:** Tu editor entiende tu código mejor.
+- 🏗️ **Escalable:** Ideal para proyectos grandes y equipos.
 
-### 🟩 Ejemplo comparativo
+### 🆚 Ejemplo comparativo
 
+#### JavaScript (Riesgoso)
 ```js
-// JavaScript
 function sum(a, b) {
   return a + b;
 }
-
-sum("1", 2); // "12" → posible bug
+sum("1", 2); // "12" 😱 (Concatenación inesperada)
 ```
 
+#### TypeScript (Seguro)
 ```ts
-// TypeScript
 function sum(a: number, b: number): number {
   return a + b;
 }
-
-sum("1", 2); // ❌ error de tipos
+sum("1", 2); // ❌ Error: Argument of type 'string' is not assignable to parameter of type 'number'.
 ```
 
 ---
 
-## 2. Instalación y primeros pasos
+## 2. 🛠️ Instalación y primeros pasos
 
 ```bash
 npm install -D typescript
 ```
 
-Crear archivo:
+**Ejemplo básico (`src/index.ts`):**
 
 ```ts
-// src/index.ts
 const message: string = "Hola TypeScript";
 console.log(message);
 ```
 
-Compilar:
-
+**Compilar:**
 ```bash
 npx tsc src/index.ts
 ```
 
 ---
 
-## 3. El compilador y tsconfig.json
+## 3. ⚙️ El compilador y tsconfig.json
 
-Generar archivo:
-
+Generar configuración recomendada:
 ```bash
-npx -p typescript tsc --init
+npx tsc --init
 ```
 
-Ejemplo básico:
-
+`tsconfig.json` típico:
 ```json
 {
   "compilerOptions": {
-    "target": "ES2017",
+    "target": "ES2020",
     "module": "ESNext",
     "strict": true,
     "rootDir": "./src",
     "outDir": "./dist",
-    "moduleResolution": "node",
-    "esModuleInterop": true
+    "moduleResolution": "node"
   },
   "include": ["src"]
 }
@@ -119,186 +94,164 @@ Ejemplo básico:
 
 ---
 
-## 4. Tipos básicos
+## 4. 🧱 Tipos básicos
 
 ```ts
+// Primitivos
 let age: number = 30;
 let name: string = "Marta";
 let active: boolean = true;
-```
 
-Arrays:
-
-```ts
+// Arrays
 let numbers: number[] = [1, 2, 3];
 let names: Array<string> = ["Ana", "Luis"];
-```
 
-Tuplas:
-
-```ts
+// Tuplas (Array de longitud y tipos fijos)
 let user: [string, number] = ["Nauel", 35];
 ```
 
 ---
 
-## 5. Inferencia de tipos
+## 5. 🔍 Inferencia de tipos
+
+TypeScript es inteligente. A menudo no necesitas escribir el tipo si es obvio:
 
 ```ts
-let city = "Girona"; // string
-let counter = 0;     // number
+let city = "Girona"; // TypeScript sabe que es string
+// city = 42; ❌ Error
 ```
 
 ---
 
-## 6. Tipos especiales y útiles
+## 6. 🦄 Tipos especiales y útiles
 
-### any (evitarlo)
-
+### ❌ `any` (¡Evítalo!)
+Desactiva el chequeo de tipos. Úsalo solo si estás migrando código legado o desesperado.
 ```ts
-let x: any = 42;
-x = "hola";
+let x: any = "hola"; // No hay reglas
 ```
 
-### unknown
-
+### ❓ `unknown`
+La versión segura de `any`. Te obliga a comprobar el tipo antes de usarlo.
 ```ts
 let input: unknown = "texto";
-if (typeof input === "string") input.toUpperCase();
+if (typeof input === "string") {
+  console.log(input.toUpperCase()); // ✅ Seguro
+}
 ```
 
-### void y never
-
-```ts
-function log(): void {}
-function fail(): never { throw new Error("Error"); }
-```
+### 🚫 `void` y `never`
+- `void`: Funciones que no retornan nada.
+- `never`: Funciones que **nunca** terminan (loops infinitos o lanzan errores).
 
 ---
 
-## 7. Funciones en TypeScript
+## 7. ⚡ Funciones
 
 ```ts
 function greet(name: string): string {
   return `Hola, ${name}`;
 }
-```
 
-Parámetros opcionales:
+// Opcionales
+function buildName(first: string, last?: string) { ... }
 
-```ts
-function buildName(name: string, surname?: string) {}
-```
-
-Rest:
-
-```ts
-function sumAll(...nums: number[]) {}
+// Rest parameters
+function sumAll(...nums: number[]) { ... }
 ```
 
 ---
 
-## 8. Objetos, interfaces y type aliases
+## 8. 📦 Objetos, Interfaces y Type Aliases
 
-Objetos:
+### `type` vs `interface`
 
+**Type (Alias):**
 ```ts
-const user: { name: string; age: number } = { name: "Marta", age: 30 };
+type User = {
+  id: number;
+  name: string;
+};
 ```
 
-Type:
-
+**Interface (Contrato extensible):**
 ```ts
-type User = { id: number; name: string; };
+interface User {
+  id: number;
+  name: string;
+}
+
+// Extensión
+interface Admin extends User {
+  role: "admin";
+}
 ```
 
-Interface:
-
-```ts
-interface User { id: number; name: string; }
-```
-
-Extensión:
-
-```ts
-interface Admin extends User { admin: true; }
-```
+> [!TIP]
+> Usa `interface` para objetos y clases si quieres permitir extensión. Usa `type` para uniones, intersecciones o primitivos.
 
 ---
 
-## 9. Uniones, intersecciones y narrowing
+## 9. 🔀 Uniones, Intersecciones y Narrowing
 
-Union:
-
+**Union (`|`):** "Puede ser esto O aquello".
 ```ts
 let id: string | number;
+id = 101; // ✅
+id = "ABC"; // ✅
 ```
 
-Narrowing:
-
+**Intersección (`&`):** "Debe tener esto Y aquello".
 ```ts
-function printId(id: string | number) {
-  if (typeof id === "string") console.log(id.toUpperCase());
-  else console.log(id.toFixed(2));
-}
+type Entity = { id: string } & { created: Date };
 ```
 
-Intersección:
-
+**Narrowing (Estrechamiento):**
 ```ts
-type A = { id: string };
-type B = { createdAt: Date };
-type Entity = A & B;
-```
-
----
-
-## 10. Literales y enums
-
-```ts
-type Role = "admin" | "user" | "guest";
-```
-
-Enum:
-
-```ts
-enum Status { Pending = "PENDING", Done = "DONE" }
-```
-
----
-
-## 11. Clases y POO
-
-```ts
-class Person {
-  constructor(public name: string, private age: number) {}
-
-  greet() { console.log(`Hola, soy ${this.name}`); }
-}
-```
-
-Herencia:
-
-```ts
-class Employee extends Person {
-  constructor(n: string, a: number, public role: string) {
-    super(n, a);
+function process(val: number | string) {
+  if (typeof val === "string") {
+    // Aquí TypeScript sabe que 'val' es string
+    return val.toUpperCase();
   }
 }
 ```
 
 ---
 
-## 12. Genéricos
+## 10. 🏛️ Clases y POO
+
+TypeScript simplifica los constructores y añade modificadores de acceso (`public`, `private`, `protected`).
+
+```ts
+class Person {
+  // Propiedades declaradas en el constructor (shorthand)
+  constructor(public name: string, private age: number) {}
+
+  greet() {
+    console.log(`Hola, soy ${this.name}`);
+  }
+}
+
+const p = new Person("Sofía", 28);
+// p.age ❌ Error: privado
+```
+
+---
+
+## 11. 🧬 Genéricos
+
+Haz componentes reutilizables que funcionen con varios tipos (como una "variable para tipos").
 
 ```ts
 function wrap<T>(value: T): T[] {
   return [value];
 }
+
+const numbers = wrap<number>(5); // [5]
+const strings = wrap("hola");    // ["hola"] (inferido)
 ```
 
-Interfaces genéricas:
-
+**En Interfaces:**
 ```ts
 interface ApiResponse<T> {
   data: T;
@@ -308,76 +261,41 @@ interface ApiResponse<T> {
 
 ---
 
-## 13. Módulos y organización
+## 12. 🧰 Utility Types
+
+Herramientas integradas para transformar tipos:
+
+- **`Partial<T>`:** Todo opcional.
+- **`Required<T>`:** Todo obligatorio.
+- **`Pick<T, K>`:** Selecciona solo algunas propiedades.
+- **`Omit<T, K>`:** Quita algunas propiedades.
 
 ```ts
-// User.ts
-export interface User { id: number; name: string; }
-```
-
-```ts
-import type { User } from "./User";
-```
-
----
-
-## 14. Utility Types
-
-### Partial
-
-```ts
-type UserUpdate = Partial<User>;
-```
-
-### Pick
-
-```ts
-type UserPreview = Pick<User, "id" | "name">;
-```
-
-### Omit
-
-```ts
-type UserWithoutEmail = Omit<User, "email">;
-```
-
----
-
-## 15. Librerías JavaScript con TypeScript
-
-```bash
-npm install axios
-npm install -D @types/axios
-```
-
----
-
-## 16. Integración con Parcel
-
-```bash
-npm install -D parcel typescript
-```
-
-`package.json`:
-
-```json
-{
-  "scripts": { "dev": "parcel src/index.html" }
+interface Todo {
+  title: string;
+  desc: string;
 }
+
+type TodoPreview = Pick<Todo, "title">; // { title: string }
 ```
 
 ---
 
-## 17. Buenas prácticas
+## 13. ✅ Buenas prácticas
 
-- Usa `strict: true`
-- Evita `any`
-- Tipa APIs públicas
-- Usa literales en lugar de strings sueltos
-- Organiza tipos en carpetas separadas
+1. **Strict Mode:** Siempre `strict: true` en `tsconfig.json`.
+2. **No mientas:** Evita `as any` o aserciones de tipo (`as Something`) si no es estrictamente necesario.
+3. **Tipa lo justo:** Deja que la **inferencia** trabaje por ti.
+4. **Organización:** Separa tus tipos/interfaces en archivos `.d.ts` o `types.ts` si crecen mucho.
 
-| **Información**   |                                            |
-| ---               | ---                                        |
-| **Autor:**        | Nauel Gómez @KeepCoding                    |
-| **Curso:**        | Full Stack Web Bootcamp XIX - Frontend Pro |
-| **Fecha:**        | Diciembre 2025                             |
+---
+
+<div align="center">
+
+| **Información** | |
+| :--- | :--- |
+| **Autor** | Nauel Gómez @KeepCoding |
+| **Curso** | Full Stack Web Bootcamp XIX - Frontend Pro |
+| **Fecha** | Diciembre 2025 |
+
+</div>

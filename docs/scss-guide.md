@@ -1,53 +1,42 @@
-# Guía de SCSS (Sass) para Frontend Pro
+# 🎨 Guía de SCSS (Sass)
 
-<div align="center">
-    <img src="https://keepcoding.io/wp-content/uploads/2024/11/Logo-kc237.svg" alt="KeepCoding Web Bootcamp XV - Frontend PRO">
-</div>
-
-Guía rápida de SCSS (Sass) para el módulo de Frontend Pro del Bootcamp de Web de KeepCoding.
+> **Guía rápida de SCSS (Sass) para el módulo de Frontend Pro del Bootcamp de Web de KeepCoding.**
 
 ---
 
-# 📚 Índice
+## 📚 Índice
 
-- [Guía de SCSS (Sass) para Frontend Pro](#guía-de-scss-sass-para-frontend-pro)
-- [📚 Índice](#-índice)
-  - [1. ¿Qué es SCSS y por qué usarlo?](#1-qué-es-scss-y-por-qué-usarlo)
-    - [Ejemplo comparativo](#ejemplo-comparativo)
-  - [2. Instalación y primeros pasos](#2-instalación-y-primeros-pasos)
-  - [3. Variables](#3-variables)
-  - [4. Nesting (anidación)](#4-nesting-anidación)
-  - [5. Mixins](#5-mixins)
-  - [6. Extends y placeholders](#6-extends-y-placeholders)
-  - [7. Funciones](#7-funciones)
-  - [8. Partials y uso de @use](#8-partials-y-uso-de-use)
-  - [9. Control de flujo (if, each, for)](#9-control-de-flujo-if-each-for)
-    - [if](#if)
-    - [each](#each)
-    - [for](#for)
-  - [10. Arquitectura recomendada de carpetas](#10-arquitectura-recomendada-de-carpetas)
-    - [Estructura simple para Frontend Pro](#estructura-simple-para-frontend-pro)
-  - [11. Buenas prácticas](#11-buenas-prácticas)
+- [1. ¿Qué es SCSS y por qué usarlo?](#1-qué-es-scss-y-por-qué-usarlo)
+- [2. Instalación y primeros pasos](#2-instalación-y-primeros-pasos)
+- [3. Variables](#3-variables)
+- [4. Nesting (anidación)](#4-nesting-anidación)
+- [5. Mixins](#5-mixins)
+- [6. Extends y placeholders](#6-extends-y-placeholders)
+- [7. Funciones](#7-funciones)
+- [8. Partials y uso de @use](#8-partials-y-uso-de-use)
+- [9. Control de flujo](#9-control-de-flujo-if-each-for)
+- [10. Arquitectura recomendada](#10-arquitectura-recomendada-de-carpetas)
+- [11. Buenas prácticas](#11-buenas-prácticas)
 
 ---
 
-## 1. ¿Qué es SCSS y por qué usarlo?
+## 1. 🧐 ¿Qué es SCSS y por qué usarlo?
 
-**SCSS** es la sintaxis moderna de **Sass**, un preprocesador CSS que añade:
+**SCSS** es la sintaxis moderna de **Sass**, un preprocesador CSS que añade superpoderes a tu hoja de estilos:
 
-- Variables
-- Funciones
-- Mixins
-- Anidación
-- Reutilización de estilos
-- Arquitecturas escalables
+- ✨ **Variables**
+- 🛠️ **Funciones**
+- 🧩 **Mixins**
+- 📦 **Anidación**
+- ♻️ **Reutilización de estilos**
+- 🏗️ **Arquitecturas escalables**
 
-El código SCSS se compila a CSS estándar.
+> [!NOTE]
+> El código SCSS no es interpretado directamente por el navegador; se **compila** a CSS estándar.
 
-### Ejemplo comparativo
+### 🆚 Ejemplo comparativo
 
-**CSS:**
-
+#### CSS Tradicional
 ```css
 .button {
   padding: 10px;
@@ -58,8 +47,7 @@ El código SCSS se compila a CSS estándar.
 }
 ```
 
-**SCSS:**
-
+#### SCSS (Nesting)
 ```scss
 .button {
   padding: 10px;
@@ -73,7 +61,7 @@ El código SCSS se compila a CSS estándar.
 
 ---
 
-## 2. Instalación y primeros pasos
+## 2. 🛠️ Instalación y primeros pasos
 
 Instalar Sass con npm:
 
@@ -81,23 +69,21 @@ Instalar Sass con npm:
 npm install -D sass
 ```
 
-Compilar:
-
+**Compilar manualmente:**
 ```bash
 npx sass src/styles.scss dist/styles.css
 ```
 
-Modo watch:
-
+**Modo Watch (recomendado para desarrollo):**
 ```bash
 npx sass --watch src/styles.scss dist/styles.css
 ```
 
 ---
 
-## 3. Variables
+## 3. 💲 Variables
 
-Permiten reutilizar valores.
+Permiten almacenar y reutilizar valores como colores, fuentes o espacios.
 
 ```scss
 $primary: #4a90e2;
@@ -109,13 +95,14 @@ button {
 }
 ```
 
-Variables globales deben ir en un archivo parcial, ej. `_variables.scss`.
+> [!TIP]
+> Las variables globales deben ir en un archivo parcial, por ejemplo `_variables.scss`.
 
 ---
 
-## 4. Nesting (anidación)
+## 4. 🪆 Nesting (anidación)
 
-Evita repetir selectores y mejora la legibilidad.
+Evita repetir selectores padres y mejora la legibilidad lógica.
 
 ```scss
 .card {
@@ -125,19 +112,21 @@ Evita repetir selectores y mejora la legibilidad.
     font-size: 20px;
   }
 
+  // El '&' hace referencia al padre (.card)
   &:hover {
     background: #f5f5f5;
   }
 }
 ```
 
-**⚠️ Nota:** evitar anidar más de **3 niveles**.
+> [!WARNING]
+> Evita anidar más de **3 niveles** de profundidad para no generar selectores CSS demasiado específicos y difíciles de mantener.
 
 ---
 
-## 5. Mixins
+## 5. 🧩 Mixins
 
-Bloques reutilizables con parámetros.
+Bloques de código reutilizables, perfectos para grupos de propiedades CSS comunes.
 
 ```scss
 @mixin flex-center {
@@ -151,7 +140,7 @@ Bloques reutilizables con parámetros.
 }
 ```
 
-Mixins con parámetros:
+**Con parámetros:**
 
 ```scss
 @mixin size($w, $h: $w) {
@@ -166,9 +155,9 @@ Mixins con parámetros:
 
 ---
 
-## 6. Extends y placeholders
+## 6. 🎭 Extends y placeholders
 
-Extienden estilos comunes sin duplicar código.
+Extienden estilos de una clase a otra sin duplicar código CSS (DRY).
 
 ```scss
 %btn-base {
@@ -182,14 +171,14 @@ Extienden estilos comunes sin duplicar código.
 }
 ```
 
-**Ventaja:** genera CSS más ligero.
-**Desventaja:** genera selectores agrupados que pueden afectar especificidad.
+- **Ventaja:** Genera CSS más ligero (agrupa selectores).
+- **Desventaja:** Puede afectar la especificidad de forma inesperada.
 
 ---
 
-## 7. Funciones
+## 7. 🧮 Funciones
 
-Permiten devolver valores calculados.
+A diferencia de los mixins, las funciones **devuelven un valor**.
 
 ```scss
 @function px-to-rem($px, $base: 16px) {
@@ -203,16 +192,17 @@ Permiten devolver valores calculados.
 
 ---
 
-## 8. Partials y uso de @use
+## 8. 📂 Partials y uso de @use
 
-Un **partial** es un archivo que empieza por `_`:
+Un **partial** es un archivo que empieza por `_` y no se compila por separado, sino que se importa.
 
+Estructura:
 ```text
 _variables.scss
 _mixins.scss
 ```
 
-Importación moderna (recomendada):
+**Importación moderna (Recomendada):**
 
 ```scss
 @use "variables";
@@ -226,10 +216,9 @@ button {
 
 ---
 
-## 9. Control de flujo (if, each, for)
+## 9. 🔀 Control de flujo (if, each, for)
 
 ### if
-
 ```scss
 $theme: dark;
 
@@ -243,7 +232,7 @@ body {
 ```
 
 ### each
-
+Ideal para generar clases repetitivas (ej. botones de colores).
 ```scss
 $colors: (primary: #4a90e2, danger: #e24a4a);
 
@@ -255,7 +244,6 @@ $colors: (primary: #4a90e2, danger: #e24a4a);
 ```
 
 ### for
-
 ```scss
 @for $i from 1 through 4 {
   .m-#{$i} {
@@ -266,21 +254,20 @@ $colors: (primary: #4a90e2, danger: #e24a4a);
 
 ---
 
-## 10. Arquitectura recomendada de carpetas
+## 10. 🏗️ Arquitectura recomendada de carpetas
 
-### Estructura simple para Frontend Pro
+Estructura simple pero robusta para el proyecto:
 
 ```text
 scss/
-  _variables.scss
-  _mixins.scss
-  _base.scss
-  _components.scss
-  main.scss
+  ├── _variables.scss
+  ├── _mixins.scss
+  ├── _base.scss
+  ├── _components.scss
+  └── main.scss
 ```
 
-Ejemplo de `main.scss`:
-
+**`main.scss`:**
 ```scss
 @use "variables";
 @use "mixins";
@@ -290,19 +277,23 @@ Ejemplo de `main.scss`:
 
 ---
 
-## 11. Buenas prácticas
+## 11. ✅ Buenas prácticas
 
-- Usa **@use** en lugar de `@import` (deprecated).
-- No abuses del nesting (máx. 3 niveles).
-- Agrupa variables: colores, tipografía, espaciado.
-- Prefiere mixins frente a extends cuando haya riesgo de colisión.
-- Usa funciones para cálculos de medida y escalas.
-- Mantén una arquitectura clara y escalable.
+1. Usa **`@use`** en lugar de `@import` (este último está deprecated).
+2. No abuses del **nesting** (máx. 3 niveles).
+3. **Agrupa variables** por contexto: colores, tipografía, espaciado.
+4. Prefiere **mixins** antes que extends si hay riesgo de colisión de estilos.
+5. Usa **funciones** para cálculos matemáticos (escalas, conversión de unidades).
+6. Mantén una **arquitectura** de archivos limpia.
 
 ---
 
-| **Información**        |                                             |
-| ---------------------- | :------------------------------------------ |
-| **Autor:**             | Nauel Gómez @KeepCoding                     |
-| **Curso:**             | Full Stack Web Bootcamp XIX - Frontend Pro  |
-| **Fecha:**             | Diciembre 2025                              |
+<div align="center">
+
+| **Información** | |
+| :--- | :--- |
+| **Autor** | Nauel Gómez @KeepCoding |
+| **Curso** | Full Stack Web Bootcamp XIX - Frontend Pro |
+| **Fecha** | Diciembre 2025 |
+
+</div>
