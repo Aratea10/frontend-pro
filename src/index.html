@@ -2,12 +2,18 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Frontend Pro</title>
+    <include src="src/_head.html" locals='{
+            "title": "Home | Quidditch Games XIX",
+            "styles": "styles/teams.scss"
+        }'>
+    </include>
 </head>
 
 <body>
+
+    <!-- TODO: crear _hero.html -->
+    <include src="src/_hero.html"></include>
+
     Frontend Pro With Parcel!
     <a href="./teams.html">Hogwarts Teams</a>
 
