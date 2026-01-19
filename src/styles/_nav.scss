@@ -1,0 +1,78 @@
+@use 'config' as *;
+
+$menu-bg-color: rgba(47, 70, 92, 0.95);
+
+nav .navbar {
+    width: 100%;
+    box-shadow: 0 1px 4px rgb(146 161 176 / 65%);
+
+    .menu-items {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background-color: $menu-bg-color;
+        box-shadow: inset 0 0 2000px rgba(255, 255, 255, 0.5);
+        z-index: 999;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transform: translateX(-150%);
+        transition: transform 0.5s ease-in-out;
+
+
+        li {
+            margin: 1.9rem 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+            list-style-type: none;
+
+            a {
+                text-decoration: none;
+                color: $gold-color;
+                text-transform: uppercase;
+                letter-spacing: 1.2rem;
+                font-family: $header-font-family;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+    }
+
+    .nav-container {
+
+        .checkbox {
+            position: absolute;
+            display: block;
+            top: 0;
+            left: 0;
+            cursor: pointer;
+            z-index: 99999;
+        }
+
+        .hamburger-lines {
+
+            .line {
+
+                &1 {}
+
+                &2 {}
+
+                &3 {}
+            }
+        }
+    }
+
+}
+
+input[type="checkbox"]:checked {
+    ~.menu-items {
+        transform: translateX(0);
+    }
+}
