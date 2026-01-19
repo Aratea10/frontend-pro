@@ -11,7 +11,7 @@ export class ApiService {
             .then(res => res as HPCharacter[])
     }
 
-    public static getCharactersByHouse(house: HPHouse): Promise<HPCharacter[]> {
+    public static getCharactersByHouse(house: string): Promise<HPCharacter[]> {
         return fetch(`${this.API_URL}/house/${house}`)
             .then(res => res.json())
             .then(res => res as HPCharacter[])

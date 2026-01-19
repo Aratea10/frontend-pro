@@ -1,12 +1,12 @@
-export type HPHouse = 'Gryffindor' | 'Slytherin' | 'Hufflepuff' | 'Ravenclaw';
+// export type HPHouse = 'Gryffindor' | 'Slytherin' | 'Hufflepuff' | 'Ravenclaw';
 
 // enum genera más código en el bundle final.
-// export enum HPHouse {
-//     GRYFFINDOR = 'Gryffindor',
-//     SLYTHERIN = 'Slytherin',
-//     HUFFLEPUFF = 'Hufflepuff',
-//     RAVENCLAW = 'Ravenclaw',
-// };
+export enum HPHouse {
+    GRYFFINDOR = 'Gryffindor',
+    SLYTHERIN = 'Slytherin',
+    HUFFLEPUFF = 'Hufflepuff',
+    RAVENCLAW = 'Ravenclaw',
+};
 
 export interface HPCharacter {
     id: string;

@@ -12,28 +12,27 @@ class Teams {
     private async printChracters() {
         const charactersContainer = document.querySelector('#characters-container');
         if (!charactersContainer) return;
-        charactersContainer.textContent = 'Cargando...';
 
         try {
 
             // TODO: por cada div de una casa, añadir las fotos de los personajes de esa casa.
             // Si un personaje no tiene foto, lo omito.
 
-            // const apiService = new ApiService();
-            // const characters = apiService.getCharacters();
-            // Como es estático, no necesito una instáncia de clase, puedo llamar al método directamente de la clase.
-            const characters = await ApiService.getCharacters();
+            for (const house in HPHouse) {
+                console.log(house);
+                const elementClass = '#' + house.toLowerCase();
+                console.log(elementClass);
+                const element = document.querySelector(elementClass);
+                console.log(element);
+                if (!element) return;
+                const characters = await ApiService.getCharactersByHouse(house);
+                element.innerHTML = characters.filter(i => i.image).slice(0, 15).map(i => `
+                    <div>
+                        <img src="${i.image}"></img>
+                    </div>
+                `).join('');
+            }
 
-            charactersContainer.innerHTML = characters.slice(0, 15).map(i => `
-                <div>
-                    <strong>${i.name}</strong>
-                    <p>Casa: ${i.house}</p>
-                    <img src="${i.image}"></img>
-                </div>
-            `).join('');
-            // console.table(
-            //     characters.filter( i => i.hogwartsStudent ).map( (i) => ({ id: i.id, name: i.name, house: i.house, actor: i.actor, patronus: i.patronus, length: i.wand.length?.toFixed(0) }))
-            // );
         } catch (e) {
             charactersContainer.textContent = 'Error al obtener los personajes';
         }
