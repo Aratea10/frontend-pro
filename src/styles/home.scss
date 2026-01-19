@@ -1,0 +1,49 @@
+@use 'config' as *;
+@forward 'common';
+
+section#counter {
+    background-color: $bg-color-light;
+    padding: 3rem 0;
+
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h4 {
+        font-family: $header-font-family;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5rem;
+        margin-bottom: 2rem;
+    }
+
+    ul {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    li {
+        font-family: $body-font-family;
+        flex: 1;
+        display: inline-block;
+        list-style-type: none;
+        padding: 1em;
+        text-transform: uppercase;
+        color: $gold-color;
+        text-align: center;
+
+        span {
+            display: block;
+            font-size: 3.5em;
+        }
+    }
+}
+
+div#countdown {
+    width: 100%;
+    padding: 0 5rem;
+}
