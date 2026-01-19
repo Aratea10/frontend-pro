@@ -1,0 +1,31 @@
+@use 'config' as *;
+
+/* Footer */
+footer {
+    &.footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 2rem 0;
+        background-color: $bg-color;
+        color: #3d3d3d;
+        font-family: $body-font-family;
+        font-size: 0.8rem;
+
+        .social {
+            margin-top: 1rem;
+        }
+
+        a {
+            color: #3d3d3d;
+            text-decoration: none;
+            font-family: $body-font-family;
+
+            .icon {
+                color: #3d3d3d;
+                fill: #3d3d3d;
+            }
+        }
+    }
+}
