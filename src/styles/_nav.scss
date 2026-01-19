@@ -1,6 +1,8 @@
 @use 'config' as *;
+@use 'sass:math';
 
 $menu-bg-color: rgba(47, 70, 92, 0.95);
+$line-color: #0e2431;
 
 nav .navbar {
     width: 100%;
@@ -46,27 +48,66 @@ nav .navbar {
     }
 
     .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+        height: $nav-height - 2px;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            height: 100%;
+
+            a {
+                max-height: $nav-height;
+                width: auto;
+            }
+        }
 
         .checkbox {
             position: absolute;
             display: block;
+            height: math.div($nav-height, 2);
+            width: math.div($nav-height, 2);
             top: 0;
             left: 0;
             cursor: pointer;
             z-index: 99999;
+            opacity: 0;
         }
 
-        .hamburger-lines {
+        .hamburger-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            .line {
 
-                &1 {}
+            .hamburger-lines {
+                width: math.div($nav-height, 2);
+                height: math.div($nav-height, 2);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                z-index: 9999;
 
-                &2 {}
 
-                &3 {}
+                .line {
+                    height: 4px;
+                    width: 100%;
+                    border-radius: 10px;
+                    background: $line-color;
+
+                    &1 {}
+
+                    &2 {}
+
+                    &3 {}
+                }
             }
         }
+
     }
 
 }
@@ -76,3 +117,5 @@ input[type="checkbox"]:checked {
         transform: translateX(0);
     }
 }
+
+// Todo: L1 i L3 se cruzan y L2 desaparece
