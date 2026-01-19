@@ -48,6 +48,9 @@ class Teams extends Page {
                 if (!id) return;
                 const character = await HPApiService.getCharacter(id);
                 console.log(character);
+                // Tenemos que generar un elemento de tipo CharacterModal
+                // añadirlo al dom (con la etiqueta definida)
+                // llamar a show con la info del personaje
             }
         });
     }

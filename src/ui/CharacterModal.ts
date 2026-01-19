@@ -1,25 +1,40 @@
+import { HPCharacter } from '../services/hp.types';
 
 export class CharacterModal extends HTMLElement {
 
     private shadow: ShadowRoot;
+    private character: HPCharacter | null = null;
 
     constructor() {
         super();
         // Aislamos el shadow del componente
         this.shadow = this.attachShadow({ mode: 'open' });
+        this.render();
+        // this.textContent =   'Soy un CharacterModal custom';
+    }
+
+    public show(character: HPCharacter): void {
+        this.character = character;
+        this.render();
+        this.classList.add('visible');
+    }
+
+    private render(): void {
+        if (!this.character) {
+            this.shadow.innerHTML = this.getStyles();
+            return;
+        }
+
+        const { name, image, house, actor, dateOfBirth, patronus, species, ancestry, wand, alive } = this.character;
 
         this.shadow.innerHTML = `
-            <style>
-                /* Estos estilos estan encapsulados */
-                p {
-                    color: red;
-                    font-weight: bolder;
-                }
-            </style>
-            <p>Soy un parrafo</p>
-        `;
-
-        // this.textContent =   'Soy un CharacterModal custom';
+            ${this.getStyles()}
+            <div class="modal-overlay">
+                <div class="modal-container">
+                    <span>${name}</span>
+                </div>
+            </div>
+        `
     }
 
     connectedCallback() {
