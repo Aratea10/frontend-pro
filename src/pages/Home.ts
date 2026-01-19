@@ -1,4 +1,5 @@
 import { DateTime } from 'luxon';
+import { Page } from './Page';
 
 interface CountdownElements {
     days: HTMLElement;
@@ -7,23 +8,25 @@ interface CountdownElements {
     seconds: HTMLElement;
 }
 
-class Home {
+class Home extends Page {
 
     private coundownElements: CountdownElements | null = null;
+    private countdownInterval: number | null = null;
 
     private readonly TARGET_MONTH = 11; // En Date() los meses son en index 0, en Luxon los meses son en index 1
     private readonly TARGET_DAY = 11;
 
-    constructor() {
-        console.log('Home Instanciado');
-        this.bootstrap();
-    }
 
-    private bootstrap(): void {
+    bootstrap(): void {
         this.initializeElemets();
         if (this.coundownElements) {
             this.startCountdown();
         }
+    }
+
+    destroy(): void | Promise<void> {
+        if (!this.countdownInterval) return;
+        clearInterval(this.countdownInterval);
     }
 
     private getNextEventDate(): DateTime {
