@@ -1,4 +1,4 @@
-import { HPCharacter } from './hp.types';
+import { HPCharacter, HPHouse } from './hp.types';
 
 export class ApiService {
 
@@ -7,6 +7,12 @@ export class ApiService {
     // Una función estática NO requiere una instáncia de clase
     public static getCharacters(): Promise<HPCharacter[]> {
         return fetch(this.API_URL)
+            .then(res => res.json())
+            .then(res => res as HPCharacter[])
+    }
+
+    public static getCharactersByHouse(house: HPHouse): Promise<HPCharacter[]> {
+        return fetch(`${this.API_URL}/house/${house}`)
             .then(res => res.json())
             .then(res => res as HPCharacter[])
     }
