@@ -8,7 +8,7 @@ export abstract class Page {
 
         window.addEventListener('beforeunload', () => {
             this.destroy();
-        })
+        });
     }
 
     abstract bootstrap(): void | Promise<void>;

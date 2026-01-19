@@ -1,0 +1,92 @@
+@use 'config' as *;
+@use 'responsive' as *;
+@forward 'common';
+
+
+// Variables locales
+$border-color: #ccc;
+$border-radius: 0.2rem;
+$error-color: rgb(163, 0, 0);
+$button-text-color: #4d3c3c;
+
+// Mixins
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin form-input-base {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+}
+
+// Estilos del contenedor del formulario
+.form-container {
+    @include flex-center;
+    flex-direction: column;
+    padding: 3rem 0;
+
+    form {
+        @include flex-center;
+        flex-direction: column;
+        width: 50%;
+
+        input,
+        textarea {
+            @include form-input-base;
+        }
+
+        button {
+            @include form-input-base;
+            margin: 1rem 0;
+            background-color: $gold-color;
+            color: $button-text-color;
+
+            font: {
+                weight: 600;
+                family: $body-font-family;
+                size: 1.1rem;
+            }
+
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s ease,
+            color 0.3s ease;
+
+            &:hover {
+                background-color: #fff;
+                color: $gold-color;
+            }
+        }
+
+        span.error {
+            align-self: flex-start;
+            color: $error-color;
+            display: none;
+
+            font: {
+                family: $body-font-family;
+                size: 0.8rem;
+            }
+
+            &.show {
+                display: block;
+            }
+        }
+    }
+
+    label {
+        margin: 1rem 0 2rem;
+        font-family: $header-font-family;
+
+        text: {
+            align: center;
+            transform: uppercase;
+        }
+
+        letter-spacing: 0.5rem;
+    }
+}
