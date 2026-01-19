@@ -1,16 +1,20 @@
 import { ApiService } from '../services/ApiService';
 import { HPCharacter, HPHouse } from '../services/hp.types';
 import { HPApiService } from '../services/HPApiService';
+import { Page } from './Page';
 
 
-class Teams {
+class Teams extends Page {
 
-    constructor() {
-        console.log('Teams instanciado');
-        this.bootstrap();
-    }
+    // constructor() {
+    //      en POO si implementamos un constructor en la clase hija
+    //      debe llamar siempre a super() que es el constructor del padre.
+    //     super();
+    //     console.log('Teams instanciado');
+    //     this.bootstrap();
+    // }
 
-    private async bootstrap(): Promise<void> {
+    async bootstrap(): Promise<void> {
         await this.printChracters();
         this.charactersClickEvent();
     }
