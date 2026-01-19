@@ -4,11 +4,11 @@
     <img src="https://keepcoding.io/wp-content/uploads/2024/11/Logo-kc237.svg" alt="KeepCoding Web Bootcamp XV - Frontend PRO">
 </div>
 
-Guía rápida de SCSS (Sass) para el módulo de Frontend Pro del Bootcamp de Web de KeepCoding. 
+Guía rápida de SCSS (Sass) para el módulo de Frontend Pro del Bootcamp de Web de KeepCoding.
 
 ---
 
-# 📚 Índice  
+# 📚 Índice
 
 - [Guía de SCSS (Sass) para Frontend Pro](#guía-de-scss-sass-para-frontend-pro)
 - [📚 Índice](#-índice)
@@ -35,16 +35,17 @@ Guía rápida de SCSS (Sass) para el módulo de Frontend Pro del Bootcamp de Web
 
 **SCSS** es la sintaxis moderna de **Sass**, un preprocesador CSS que añade:
 
-- Variables  
-- Funciones  
-- Mixins  
-- Anidación  
-- Reutilización de estilos  
-- Arquitecturas escalables  
+- Variables
+- Funciones
+- Mixins
+- Anidación
+- Reutilización de estilos
+- Arquitecturas escalables
 
 El código SCSS se compila a CSS estándar.
 
 ### Ejemplo comparativo
+
 **CSS:**
 
 ```css
@@ -181,7 +182,7 @@ Extienden estilos comunes sin duplicar código.
 }
 ```
 
-**Ventaja:** genera CSS más ligero.  
+**Ventaja:** genera CSS más ligero.
 **Desventaja:** genera selectores agrupados que pueden afectar especificidad.
 
 ---
@@ -291,11 +292,17 @@ Ejemplo de `main.scss`:
 
 ## 11. Buenas prácticas
 
-- Usa **@use** en lugar de `@import` (deprecated).  
-- No abuses del nesting (máx. 3 niveles).  
-- Agrupa variables: colores, tipografía, espaciado.  
-- Prefiere mixins frente a extends cuando haya riesgo de colisión.  
-- Usa funciones para cálculos de medida y escalas.  
-- Mantén una arquitectura clara y escalable.  
+- Usa **@use** en lugar de `@import` (deprecated).
+- No abuses del nesting (máx. 3 niveles).
+- Agrupa variables: colores, tipografía, espaciado.
+- Prefiere mixins frente a extends cuando haya riesgo de colisión.
+- Usa funciones para cálculos de medida y escalas.
+- Mantén una arquitectura clara y escalable.
 
 ---
+
+| **Información**        |                                             |
+| ---------------------- | :------------------------------------------ |
+| **Autor:**             | Nauel Gómez @KeepCoding                     |
+| **Curso:**             | Full Stack Web Bootcamp XIX - Frontend Pro  |
+| **Fecha:**             | Diciembre 2025                              |
