@@ -31,10 +31,68 @@ export class CharacterModal extends HTMLElement {
             ${this.getStyles()}
             <div class="modal-overlay">
                 <div class="modal-container">
-                    <span>${name}</span>
+                    <button class="close-btn" aria-label="Cerrar modal">&times;</button>
+                    
+                    <div class="modal-content">
+                        <div class="character-image">
+                            ${image ? `<img src="${image}" alt="${name}">` : '<div class="no-image">Sin imagen</div>'}
+                        </div>
+                        
+                        <div class="character-info">
+                            <h2>${name}</h2>
+                            
+                            ${house ? `<div class="house-badge ${house.toLowerCase()}">${house}</div>` : ''}
+                            
+                            <div class="info-grid">
+                                ${actor ? `
+                                    <div class="info-item">
+                                        <span class="label">Actor:</span>
+                                        <span class="value">${actor}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                ${species ? `
+                                    <div class="info-item">
+                                        <span class="label">Especie:</span>
+                                        <span class="value">${species}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                ${ancestry ? `
+                                    <div class="info-item">
+                                        <span class="label">Ancestría:</span>
+                                        <span class="value">${ancestry}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                ${dateOfBirth ? `
+                                    <div class="info-item">
+                                        <span class="label">Fecha de nacimiento:</span>
+                                        <span class="value">${dateOfBirth}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                ${patronus ? `
+                                    <div class="info-item">
+                                        <span class="label">Patronus:</span>
+                                        <span class="value">${patronus}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                <div class="info-item">
+                                    <span class="label">Estado:</span>
+                                    <span class="value ${alive ? 'alive' : 'dead'}">
+                                        ${alive ? '✓ Vivo' : '✕ Fallecido'}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        `
+        `;
+
+        // this.addEventListeners();
     }
 
     connectedCallback() {
