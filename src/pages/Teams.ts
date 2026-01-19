@@ -1,4 +1,5 @@
 import { ApiService } from '../services/ApiService';
+import { HPHouse } from '../services/hp.types';
 
 
 class Teams {
@@ -19,6 +20,8 @@ class Teams {
             // const characters = apiService.getCharacters();
             // Como es estático, no necesito una instáncia de clase, puedo llamar al método directamente de la clase.
             const characters = await ApiService.getCharacters();
+
+            characters[1].house = 'Gryffindor';
 
             charactersContainer.innerHTML = characters.slice(0, 15).map(i => `
                 <div>
