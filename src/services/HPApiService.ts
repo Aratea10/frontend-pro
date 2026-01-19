@@ -10,7 +10,8 @@ export class HPApiService {
     };
 
     public static getCharacter(id: string): Promise<HPCharacter> {
-        return ApiService.get<HPCharacter>(`${this.API_URL}/character/${id}`);
+        return ApiService.get<HPCharacter[]>(`${this.API_URL}/character/${id}`)
+            .then(res => res[0]);
     }
 
     public static getCharactersByHouse(house: string): Promise<HPCharacter[]> {

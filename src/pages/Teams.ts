@@ -1,10 +1,13 @@
 import { ApiService } from '../services/ApiService';
 import { HPCharacter, HPHouse } from '../services/hp.types';
 import { HPApiService } from '../services/HPApiService';
+import { CharacterModal } from '../ui/CharacterModal';
 import { Page } from './Page';
 
 
 class Teams extends Page {
+
+    private modal: CharacterModal | null = null;
 
     // constructor() {
     //      en POO si implementamos un constructor en la clase hija
@@ -15,6 +18,9 @@ class Teams extends Page {
     // }
 
     async bootstrap(): Promise<void> {
+        this.modal = CharacterModal.create();
+        document.body.appendChild(this.modal);
+
         await this.printChracters();
         this.charactersClickEvent();
     }
@@ -46,11 +52,15 @@ class Teams extends Page {
             if (target && target.classList.contains('hp-character')) {
                 const id = target.getAttribute('data-id');
                 if (!id) return;
-                const character = await HPApiService.getCharacter(id);
-                console.log(character);
-                // Tenemos que generar un elemento de tipo CharacterModal
-                // añadirlo al dom (con la etiqueta definida)
-                // llamar a show con la info del personaje
+                try {
+                    const character = await HPApiService.getCharacter(id);
+                    // Mostrar el modal con la información del personaje
+                    if (this.modal) {
+                        this.modal.show(character);
+                    }
+                } catch (error) {
+                    console.error('Error al cargar el personaje:', error);
+                }
             }
         });
     }
@@ -61,7 +71,13 @@ class Teams extends Page {
         const element = document.querySelector(elementRef);
         if (!element) return;
         element.innerHTML = characters.filter(i => i.image).slice(0, 15).map(i => `
-            <img src="${i.image}" data-id="${i.id}" class="hp-character"></img>
+            <img 
+                src="${i.image}" 
+                data-id="${i.id}" 
+                class="hp-character" 
+                alt="${i.name}"
+                title="Click para ver más información"
+            ></img>
         `).join('');
     }
 
