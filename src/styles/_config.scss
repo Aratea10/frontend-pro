@@ -1,0 +1,12 @@
+$header-font-family: 'Poltawski Nowy', serif;
+$body-font-family: 'Public Sans', sans-serif;
+$nav-height: 62px;
+$bg-color: #f0f0f0;
+$bg-color-light: #f8f8f8;
+$gold-color: rgb(202, 172, 0);
+
+@mixin text-primary-bold {
+    font-weight: 600;
+    text-decoration: underline;
+    color: $gold-color;
+}
