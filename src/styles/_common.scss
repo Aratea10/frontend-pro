@@ -3,6 +3,7 @@
 @forward 'reset';
 @forward 'footer';
 @forward 'nav';
+@forward '../ui/toast/toast';
 
 
 $bg-image: url('../img/header.jpg?as=webp&quality=75&width=2200');

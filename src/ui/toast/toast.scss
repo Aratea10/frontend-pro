@@ -1,0 +1,146 @@
+@use '../../styles/config' as *;
+
+// Variables
+$toast-success: #10b981;
+$toast-error: #ef4444;
+$toast-info: #3b82f6;
+$toast-warning: #f59e0b;
+$toast-bg: #ffffff;
+$toast-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+$toast-border-radius: 8px;
+$toast-padding: 1rem 1.5rem;
+
+// Container
+.toast-container {
+    position: fixed;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+
+    // Posiciones
+    &.toast-top-right {
+        top: 1rem;
+        right: 1rem;
+    }
+
+    &.toast-top-left {
+        top: 1rem;
+        left: 1rem;
+    }
+
+    &.toast-bottom-right {
+        bottom: 1rem;
+        right: 1rem;
+    }
+
+    &.toast-bottom-left {
+        bottom: 1rem;
+        left: 1rem;
+    }
+
+    &.toast-top-center {
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &.toast-bottom-center {
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+// Toast
+.toast {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: $toast-padding;
+    background-color: $toast-bg;
+    border-radius: $toast-border-radius;
+    box-shadow: $toast-shadow;
+    min-width: 300px;
+    max-width: 500px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease-in-out;
+    pointer-events: auto;
+
+    &.show {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    // Tipos
+    &.toast-success {
+        border-left: 4px solid $toast-success;
+
+        .toast-icon {
+            color: $toast-success;
+        }
+    }
+
+    &.toast-error {
+        border-left: 4px solid $toast-error;
+
+        .toast-icon {
+            color: $toast-error;
+        }
+    }
+
+    &.toast-info {
+        border-left: 4px solid $toast-info;
+
+        .toast-icon {
+            color: $toast-info;
+        }
+    }
+
+    &.toast-warning {
+        border-left: 4px solid $toast-warning;
+
+        .toast-icon {
+            color: $toast-warning;
+        }
+    }
+
+    .toast-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+    }
+
+    .toast-message {
+        flex: 1;
+        font-size: 0.95rem;
+        color: #374151;
+        line-height: 1.4;
+        font-family: $body-font-family;
+    }
+}
+
+// Animaciones para posiciones izquierdas
+.toast-container.toast-top-left,
+.toast-container.toast-bottom-left {
+    .toast {
+        transform: translateX(-100%);
+
+        &.show {
+            transform: translateX(0);
+        }
+    }
+}
+
+// Animaciones para posiciones centradas
+.toast-container.toast-top-center,
+.toast-container.toast-bottom-center {
+    .toast {
+        transform: translateY(-100%);
+
+        &.show {
+            transform: translateY(0);
+        }
+    }
+}
